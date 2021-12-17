@@ -10,6 +10,8 @@ import TableCell from '@material-ui/core/TableCell';
 import DeleteIcon from '@material-ui/icons/Delete';
 import TextField from '@material-ui/core/TextField';
 import Table from '@material-ui/core/Table';
+import EditIcon from '@material-ui/icons/Edit'
+import { Link } from 'react-router-dom';
 import { IconButton } from '@mui/material';
 
 export default function CreateType() {
@@ -67,6 +69,7 @@ export default function CreateType() {
                             <TableRow>
                                 <TableCell align='center'>ID</TableCell>
                                 <TableCell align='center'>Tipo</TableCell>
+                                <TableCell align='center'>Editar</TableCell>
                                 <TableCell align='center'>Remover</TableCell>
                             </TableRow>
                         </TableHead>
@@ -82,11 +85,14 @@ export default function CreateType() {
                                     <TableRow key={types.id}>
                                         <TableCell align='left'>{types.id}</TableCell>
                                         <TableCell align='left'>{types.type}</TableCell>
-                                        <TableCell align='center'>
-                                            <IconButton onClick={() => handleDELETE(types.id)}>
-                                                <DeleteIcon></DeleteIcon>
-                                            </IconButton>
+                                        <TableCell align="center">
+                                            <Link to={{ pathname: '/typeupdate' }}><IconButton><EditIcon></EditIcon></IconButton></Link>
                                         </TableCell>
+                                            <TableCell align='center'>
+                                                <IconButton onClick={() => handleDELETE(types.id)}>
+                                                    <DeleteIcon></DeleteIcon>
+                                                </IconButton>
+                                            </TableCell>
                                     </TableRow>
                                 );
                             })}

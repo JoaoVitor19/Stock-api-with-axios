@@ -5,6 +5,8 @@ import UpdateProduct from './Telas/UpdateProduct/UpdateProduct';
 import CreateProduct from './Telas/CreateProduct/CreateProduct';
 import CreateProvider from "./Telas/CreateProvider/CreateProvider";
 import CreateType from "./Telas/CreateType/CreateType"
+import EditType from "./Telas/CreateType/EditType"
+import EditProvider from "./Telas/CreateProvider/EditProvider";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/create" element={<CreateProduct />} />
         <Route path="/types" element={<CreateType />} />
         <Route path="/provider" element={<CreateProvider />} />
+        <Route path="/providerupdate" element={<EditProvider />} />
+        <Route path="/typeupdate" element={<EditType />} />
       </Routes>
       </div>
   )

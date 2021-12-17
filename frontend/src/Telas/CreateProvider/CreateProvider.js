@@ -90,6 +90,7 @@ export default function CreateProvider() {
                                 <TableCell align='center'>Nome</TableCell>
                                 <TableCell align='center'>Email</TableCell>
                                 <TableCell align='center'>CNPJ</TableCell>
+                                <TableCell align='center'>Editar</TableCell>
                                 <TableCell align='center'>Deletar</TableCell>
                             </TableRow>
                         </TableHead>
@@ -107,6 +108,9 @@ export default function CreateProvider() {
                                         <TableCell align='center'>{providers.name}</TableCell>
                                         <TableCell align='center'>{providers.mail}</TableCell>
                                         <TableCell align='center'>{providers.cnpj}</TableCell>
+                                        <TableCell align="center">
+                                            <Link to={{ pathname: '/providerupdate' }}><IconButton><EditIcon></EditIcon></IconButton></Link>
+                                        </TableCell>
                                         <TableCell align='center'>
                                             <IconButton onClick={() => handleDELETE(providers.id)}>
                                                 <DeleteIcon></DeleteIcon>
