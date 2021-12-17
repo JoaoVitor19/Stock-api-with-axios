@@ -88,11 +88,11 @@ export default function CreateType() {
                                         <TableCell align="center">
                                             <Link to={{ pathname: '/typeupdate' }}><IconButton><EditIcon></EditIcon></IconButton></Link>
                                         </TableCell>
-                                            <TableCell align='center'>
-                                                <IconButton onClick={() => handleDELETE(types.id)}>
-                                                    <DeleteIcon></DeleteIcon>
-                                                </IconButton>
-                                            </TableCell>
+                                        <TableCell align='center'>
+                                            <IconButton onClick={() => handleDELETE(types.id)}>
+                                                <DeleteIcon></DeleteIcon>
+                                            </IconButton>
+                                        </TableCell>
                                     </TableRow>
                                 );
                             })}
