@@ -1,112 +1,84 @@
-import {useState,useEffect} from 'react'
-import './CreateProduct.css';
-import TextField from '@mui/material/TextField';
+import React, { useEffect, useState } from "react";
 import api from '../../api'
+import TextField from '@mui/material/TextField';
 import Menu from '../../components/Menu/Menu'
-import Button from '@material-ui/core/Button'
+import Button from '@mui/material/Button';
 
 export default function CreateProduct() {
 
-    const data = {
-        name: "",
-        quantity: "",
-        valueBuy: "",
-        valueSell: "",
-        typeProduct: {
-            type: "",
-        },
-        provider: {
-            name: "",
-            mail: "",
-            cnpj: "",
-        },
+    const [product, setProduct] = useState({})
+
+    function changeName(props) {
+        setProduct({
+            ...product,
+            name: props.target.value
+        })
     }
 
-    const [typeProduct,setTypeProduct ] = useState("");
-    
-    const [product, setProduct] = useState(data);
-
-    const getProduct = async () => {
-        const response = await api.get('/product')
-        console.log(response)
-        getProduct(response.data)
-        return response.data
+    function changeQuantity(props) {
+        setProduct({
+            ...product,
+            quantity: props.target.value
+        })
     }
 
-    const onChange = (e) => {
-        setProduct(e)
+    function changeValueBuy(props) {
+        setProduct({
+            ...product,
+            valueBuy: props.target.value
+        })
     }
-    
 
-    const handleSubmit = async (id) => {
-        await api.post(`/product/${id}`, product);
+    function changeValueSell(props) {
+        setProduct({
+            ...product,
+            valueSell: props.target.value
+        })
+    }
+
+    function changeTypeProduct(props) {
+        setProduct({
+            ...product,
+            typeProduct: props.target.value
+        })
+    }
+
+    function changeProvider(props) {
+        setProduct({
+            ...product,
+            provider: props.target.value
+        })
+    }
+
+    function onSubmitPost(e) {
+        api.post('/product/', {
+            name: product.name,
+            quantity: product.quantity,
+            valueBuy: product.valueBuy,
+            valueSell: product.valueSell,
+            typeProduct: {
+                id: product.typeProduct
+            },
+            provider: {
+                id: product.provider
+            }
+        })
+        e.preventDefault()
     }
 
     return (
         <div>
             <Menu />
-            <form onSubmit={handleSubmit}>
-                <h2>Criar Produto</h2>
-                <TextField
-                    className="text" id="outlined-basic"
-                    label="Nome do Produto"
-                    variant="outlined"
-                    type="text" name="Produto"
-                    onChange={e => onChange(e.target.value)}
-                    value={product.name}
-                />
-                <TextField
-                    className="text" id="outlined-basic"
-                    label="Quantidade" variant="outlined" 
-                    type="number" name='product.quantity'
-                    onChange={e => onChange(e.target.value)}
-                    value={product.quantity}
-                />
-                <TextField
-                    className="text" id="outlined-basic"
-                    label="Valor de Compra" variant="outlined"
-                     type="number"
-                     onChange={e => onChange(e.target.value)}
-                     value={product.valueBuy}
-                />
-                <TextField
-                    className="text" id="outlined-basic"
-                    label="Valor de Venda" variant="outlined"
-                     type="number"
-                     onChange={e => onChange(e.target.value)}
-                     value={product.valueSell}
-                />
-                {/* <TextField
-                    className="text" id="outlined-basic"
-                    label="Tipo de Produto" variant="outlined"
-                     type="text"
-                     onChange={e => onChange(e.target.value)}
-                     value={product.typeProduct.type}
-                />
-                <TextField
-                    className="text" id="outlined-basic"
-                    label="Nome do Fornecedor" variant="outlined"
-                     type="text"
-                     onChange={e => onChange(e.target.value)}
-                     value={product.provider.name}
-                />
-                {/* <TextField
-                    className="text" id="outlined-basic"
-                    label="Cnpj do Fornecedor" variant="outlined"
-                     type="number"
-                     onChange={e => onChange(e.target.value)}
-                     value={product.provider.cnpj}
-                />
-                <TextField
-                    className="text" id="outlined-basic"
-                    placeholder='Email do Fornecedor' variant="outlined"
-                    onChange={e => onChange(e.target.value)}
-                    value={product.provider.mail}
-                /> */}
-                <Button 
-                className="button"  variant="contained"  
-                color="secondary" type="submit"> Salvar Alterações </Button>
+            <form onSubmit={onSubmitPost}>
+                <h2>Cadastro de novo Produto</h2>
+                <TextField className="text" id="outlined-basic" required label="Nome do Produto" variant="outlined" onChange={changeName} type="text" value={product.name} />
+                <TextField className="text" id="outlined-basic" required label="Quantidade" variant="outlined" onChange={changeQuantity} type="text" value={product.quantity} />
+                <TextField className="text" id="outlined-basic" required label="Valor de Venda" variant="outlined" onChange={changeValueBuy} type="text" value={product.valueBuy} />
+                <TextField className="text" id="outlined-basic" required label="Valor de Compra" variant="outlined" onChange={changeValueSell} type="text" value={product.valueSell} />
+                <TextField className="text" id="outlined-basic" required label="Tipo de Produto" variant="outlined" onChange={changeTypeProduct} type="text" value={product.typeProduct} />
+                <TextField className="text" id="outlined-basic" required label="Tipo de Produto" variant="outlined" onChange={changeProvider} type="text" value={product.provider} />
+                <Button className="button" variant="outlined" type="submit" color="primary"> Cadastrar </Button>
             </form>
         </div>
-    );
+    )
 }
