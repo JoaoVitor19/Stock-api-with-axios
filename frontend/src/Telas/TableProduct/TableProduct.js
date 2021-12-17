@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import api from '../../api';
 import './Table.css'
 
-export default function TableMaterial() {
+export default function TableProduct() {
 
     const [data, setData] = useState([])
     const [search, setSearch] = useState("")
@@ -52,7 +52,7 @@ export default function TableMaterial() {
                             <TableCell align='left'>Valor Venda</TableCell>
                             <TableCell align='left'>Tipo de Produto</TableCell>
                             <TableCell align='left'>Fornecedor</TableCell>
-                            <TableCell align='left'>CNPJ Fornecedor</TableCell> 
+                            <TableCell align='left'>CNPJ Fornecedor</TableCell>
                             <TableCell align='left'>Editar</TableCell>
                             <TableCell align='center'>Remover</TableCell>
                         </TableRow>

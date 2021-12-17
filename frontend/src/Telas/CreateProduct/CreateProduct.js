@@ -50,7 +50,7 @@ export default function CreateProduct() {
         })
     }
 
-    function onSubmitPost(e) {
+    function onSubmitPostProvider(e) {
         api.post('/product/', {
             name: product.name,
             quantity: product.quantity,
@@ -69,14 +69,14 @@ export default function CreateProduct() {
     return (
         <div>
             <Menu />
-            <form onSubmit={onSubmitPost}>
+            <form onSubmit={onSubmitPostProvider}>
                 <h2>Cadastro de novo Produto</h2>
                 <TextField className="text" id="outlined-basic" required label="Nome do Produto" variant="outlined" onChange={changeName} type="text" value={product.name} />
                 <TextField className="text" id="outlined-basic" required label="Quantidade" variant="outlined" onChange={changeQuantity} type="text" value={product.quantity} />
                 <TextField className="text" id="outlined-basic" required label="Valor de Venda" variant="outlined" onChange={changeValueBuy} type="text" value={product.valueBuy} />
                 <TextField className="text" id="outlined-basic" required label="Valor de Compra" variant="outlined" onChange={changeValueSell} type="text" value={product.valueSell} />
                 <TextField className="text" id="outlined-basic" required label="Tipo de Produto" variant="outlined" onChange={changeTypeProduct} type="text" value={product.typeProduct} />
-                <TextField className="text" id="outlined-basic" required label="Tipo de Produto" variant="outlined" onChange={changeProvider} type="text" value={product.provider} />
+                <TextField className="text" id="outlined-basic" required label="Fornecedor" variant="outlined" onChange={changeProvider} type="text" value={product.provider} />
                 <Button className="button" variant="outlined" type="submit" color="primary"> Cadastrar </Button>
             </form>
         </div>
