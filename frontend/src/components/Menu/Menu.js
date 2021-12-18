@@ -10,11 +10,11 @@ export default function Menu() {
                 </div>
             </div>
             <div className="section-menu">
-                <Link to="/"><button>Estoque Atual</button></Link>
+                <Link to="/"><button data-testid="button-stock">Estoque Atual</button></Link>
                 <Link to="/create"><button>Criar Produto</button></Link>
-                <Link to="/provider"><button>Criar Fornecedores</button></Link>
+                <Link to="/provider"><button data-testid="button-create"> Criar Fornecedores</button></Link>
                 <Link to="/types"><button>Tipo de Produto</button></Link>
-                <Link to="/update"><button>Alterar Produto</button></Link>
+                <Link to="/update"><button data-testid="button-update">Alterar Produto</button></Link>
             </div>
             </div>
     )
